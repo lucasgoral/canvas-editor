@@ -1,6 +1,37 @@
-$primary-color: white;
+$primary-color: green;
 $bg: black;
+
+@import url('https://fonts.googleapis.com/css?family=Blinker&display=swap');
 body {
   color: $primary-color;
-  background-color: $bg;
+  background-color: salmon;
+  font-family: 'Blinker', sans-serif;
+}
+
+#container {
+
+  background: #DDD;
+  border: 1px solid #CCC;
+  width: 1200px;
+  height: 800px;
+  position: relative;
+  &.ondrag{
+&:after {
+top: 0;
+left:0;
+right:0;
+bottom: 0;
+position: absolute;
+content: "Drag image here";
+background: rgba(0,0,0,0.5);
+border: 5px solid red;
+color: white;
+font-size: 5rem;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+    // border: 5px solid red;
+  }
 }
