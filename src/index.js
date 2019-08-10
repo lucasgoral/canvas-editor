@@ -105,14 +105,14 @@ function downloadURI(uri, name) {
     false
   );
 
-//   var uploadFile = getElementById('upload');
+  var uploadFile = document.getElementById('upload');
 
 
-// uploadFile.onchange = e => { 
+uploadFile.onchange = e => { 
 
    // getting a hold of the file reference
 //    let file = e.target.files[0]; 
-
+loadImage(e.target.files[0]);
 //    // setting up the reader
 //    let reader = new FileReader();
 //    reader.readAsText(file,'UTF-8');
@@ -123,7 +123,7 @@ function downloadURI(uri, name) {
 //       console.log( content );
 //    }
 
-// }
+}
 
 
   function loadImage(src){
