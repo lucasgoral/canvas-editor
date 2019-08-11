@@ -1,4 +1,4 @@
-# empty-project
+# Canvas editor recruitment task
 Canvas editor made as recruitment task
 
 ## Running on localhost
