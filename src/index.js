@@ -14,7 +14,8 @@ class CanvasEditor {
         this.container = document.getElementById('container');
         this.width = container.clientWidth;
         this.height = container.clientHeight;
-   
+        this.selectedFont = "Arial";
+
 
         this.stage = new Konva.Stage({
             container: 'container',
@@ -23,26 +24,58 @@ class CanvasEditor {
         });
         this.layer = new Konva.Layer();
         this.stage.add(this.layer);
-        this.renderText();
+
         this.addObjectsTransformer();
         this.bindDownloadBt();
         this.bindImageDrop();
         this.bindUploadBt();
         this.bingBgSelector();
+        this.bindTextForm();
 
     }
 
-    renderText() {
+    bindTextForm() {
+
+
+        const textInput = document.getElementById('text-input');
+
+        [...document.querySelectorAll('.radio')[0].querySelectorAll('label')].forEach((el) => {
+            el.addEventListener('click', () => {
+
+                this.selectedFont = el.querySelectorAll('input')[0].value;
+            })
+        });
+
+        document.getElementById('add-text').addEventListener('click', (e) => {
+            e.preventDefault();
+
+            let inputValue = textInput.value;
+            inputValue = inputValue.trim();
+            if (inputValue) {
+
+
+
+
+                this.renderText(inputValue);
+                textInput.value = '';
+            }
+        })
+    }
+
+    renderText(inputValue) {
 
         let text = new Konva.Text({
             x: 50,
-            y: 50,
-            fontSize: 40,
-            text: 'A text with custom font.',
+            y: 190,
+            fontSize: 20,
+            text: inputValue,
             draggable: true,
-            width: 250,
-            name: 'rect'
+            width: 300,
+            name: 'transformableObject'
         });
+
+        text.fontFamily(this.selectedFont);
+        text.align('center');
         this.layer.add(text);
         this.layer.draw();
 
@@ -58,7 +91,7 @@ class CanvasEditor {
                 return;
             }
             // do nothing if clicked NOT on our rectangles
-            if (!e.target.hasName('rect')) {
+            if (!e.target.hasName('transformableObject')) {
                 return;
             }
             // remove old transformers
@@ -224,7 +257,7 @@ class CanvasEditor {
                 width: newWidth,
                 height: newHeight,
                 draggable: true,
-                name: 'rect',
+                name: 'transformableObject',
             });
             this.layer.add(newImage);
             this.layer.draw();

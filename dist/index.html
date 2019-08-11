@@ -4,6 +4,8 @@
 <head>
     <title>Canvvas editor</title>
     <meta charset="utf-8">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Blinker&display=swap" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" as="style">
 </head>
 
 <body>
@@ -38,15 +40,15 @@
             <img src="./assets/logo_three.png" alt="Logo three">
         </div>
             <h2>Add text</h2>
-            <form action="">
+            <form id="text-form">
 
                 <input type="text" placeholder="Text input" id="text-input">
                 <div class="radio">
-                <label><input type="radio" name="font" checked> Arial</label>
-<label><input type="radio" name="font"> Times New Roman</label>
-<label><input type="radio" name="font"> Open Sans</label>
+                <label><input type="radio" name="fontName" value="Arial" > Arial</label>
+<label><input type="radio" name="fontName" value="Times New Roman" >   Times New Roman</label>
+<label><input type="radio" name="fontName" value="Open Sans"  > Open Sans</label>
 </div>
-<button>Add text</button>            
+<button id="add-text">Add text</button>            
 </form>
             <input type="file" id="upload"> </input>
 
