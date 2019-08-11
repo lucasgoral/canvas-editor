@@ -1,33 +1,15 @@
 # empty-project
+Canvas editor made as recruitment task
 
-Empty project.
-
-## Building and running on localhost
+## Running on localhost
 
 First install dependencies:
 
-```sh
 npm install
-```
 
-To create a production build:
+To run project:
 
-```sh
-npm run build-prod
-```
+npm run start:dev
 
-To create a development build:
-
-```sh
-npm run build-dev
-```
-
-## Running
-
-```sh
-node dist/bundle.js
-```
-
-## Credits
-
-Made with [createapp.dev](https://createapp.dev/)
+Go to: 
+http://localhost:9000/

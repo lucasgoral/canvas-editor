@@ -65,12 +65,12 @@ class CanvasEditor {
     renderText(inputValue) {
 
         let text = new Konva.Text({
-            x: 50,
+            x: 100,
             y: 190,
             fontSize: 20,
             text: inputValue,
             draggable: true,
-            width: 300,
+            width: 200,
             name: 'transformableObject'
         });
 
@@ -85,7 +85,7 @@ class CanvasEditor {
 
         this.stage.on('click tap', (e) => {
             // if click on empty area - remove all transformers
-            if (e.target === this.stage) {
+            if (e.target === this.stage || e.target.hasName('background')) {
                 this.stage.find('Transformer').destroy();
                 this.layer.draw();
                 return;
@@ -226,7 +226,7 @@ class CanvasEditor {
                 this.render(itemURL);
             }
         }, false);
-        this.container.addEventListener("dragexit", (e) => {
+        this.container.addEventListener("dragleave", (e) => {
             e.preventDefault();
 
             this.containerOnDragexit();
@@ -252,8 +252,8 @@ class CanvasEditor {
 
             const newImage = new Konva.Image({
                 image: image,
-                x: 100,
-                y: 100,
+                x: 150,
+                y: 150,
                 width: newWidth,
                 height: newHeight,
                 draggable: true,

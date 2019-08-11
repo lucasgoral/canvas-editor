@@ -19,30 +19,16 @@ body {
   background: #DDD;
   background-image: url("/assets/empty_background.png");
   background-repeat: repeat;
-  border: 1px solid #CCC;
+  border: 5px solid #CCC;
   width: 400px;
   height: 400px;
   position: relative;
   margin-bottom: 2rem;
 
   &.ondrag {
-    &:after {
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      position: absolute;
-      content: "Drag image here";
-      background: rgba(0, 0, 0, 0.5);
-      border: 5px solid $dark-primary-color;
-      color: white;
-      font-size: 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
 
-    // border: 5px solid red;
+
+    border: 5px solid green;
   }
 }
 
@@ -79,12 +65,17 @@ body {
 
 }
 
-button {
-
+.bt {
+  display: inline-block;
+  text-align: center;
+  max-width: 100%;
   background: $primary-color;
   color: $white;
-  padding: 1rem 4.5rem;
-  margin-bottom: 1rem;
+  padding: 1rem 4rem;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
   border: 0;
   border-radius: .5rem;
   transition: background .4s, box-shadow .4s ease;
@@ -105,37 +96,54 @@ button {
   }
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   margin-top: 0;
 }
 
-.radio{ 
+.radio {
   border: $bg 1px solid;
   padding: 1rem;
   border-radius: 0.5rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
+
   label {
     display: block;
     margin-bottom: 1rem;
+
     &:last-of-type {
       margin-bottom: 0;
     }
-    input { margin-right: 1rem;}
+
+    input {
+      margin-right: 1rem;
+    }
   }
 }
+
 #save {
   width: 400px;
 }
 
-img{
+img {
   max-width: 100%;
   height: auto;
 }
 
-.logos{
-  img{ max-height: 6rem;
-  
+.logos {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+
+  img {
+    max-width: 30%;
+    cursor: grab;
+
+    &:hover {
+      opacity: 0.9;
+    }
   }
 }
 
@@ -147,11 +155,17 @@ img{
 
   border-radius: .5rem;
 
-  
+
 }
 
-#backgrounds{
-img{
-  width: 50%;
-}
+#backgrounds {
+  img {
+    width: 50%;
+    cursor: pointer;
+    margin-bottom: .5rem;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
 }

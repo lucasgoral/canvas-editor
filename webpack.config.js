@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
+
 const config = {
   entry: './src/index.js',
   output: {
@@ -23,22 +24,23 @@ const config = {
           'sass-loader'
         ]
       },
-      {
-        test: /\.(png|jpe?g|gif)$/i,
-        use: [
-          {
-            loader: 'url-loader'
-          },
-        ],
-      },
-      {
-        test: /\.svg$/,
-        use: 'file-loader'
-      }
+      // {
+      //   test: /\.(png|jpe?g|gif)$/i,
+      //   use: [
+      //     {
+      //       loader: 'url-loader'
+      //     },
+      //   ],
+      // },
+      // {
+      //   test: /\.svg$/,
+      //   use: 'file-loader'
+      // }
     ]
   },
   plugins: [
-    new LodashModuleReplacementPlugin
+    new LodashModuleReplacementPlugin,
+  
   ]
   ,
   devServer: {

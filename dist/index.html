@@ -15,43 +15,50 @@
 
         <div class="column">
             <div id="backgrounds">
-<h2>Select background</h2>
-<img src="/assets/bgs/01.jpg" alt="BG 1">
-<img src="/assets/bgs/02.jpg" alt="BG 2">
-<img src="/assets/bgs/03.jpg" alt="BG 3">
-<img src="/assets/bgs/04.jpg" alt="BG 4">
-<button id="delete"> Delete background</button>
-</div>
+                <h2>Select background</h2>
+                <p>Click to add background</p>
+                <img draggable="false" src="/assets/bgs/01.jpg" alt="BG 1">
+                <img draggable="false" src="/assets/bgs/02.jpg" alt="BG 2">
+                <img draggable="false" src="/assets/bgs/03.jpg" alt="BG 3">
+                <img draggable="false" src="/assets/bgs/04.jpg" alt="BG 4">
+                <button class="bt" id="delete"> Delete background</button>
+            </div>
         </div>
 
         <div class="main">
             <h1>Simple editor</h1>
             <div id="container"></div>
-            <button id="save">
+            <button class="bt" id="save">
                 Save as image
             </button>
         </div>
 
         <div class="column">
             <h2>Add logo</h2>
+            <p>Drag logo to the scene</p>
             <div class="logos" id="drag-items">
-            <img src="./assets/logo_one.png" alt="Logo one">
-            <img src="./assets/logo_two.png" alt="Logo two">
-            <img src="./assets/logo_three.png" alt="Logo three">
-        </div>
+                <img src="./assets/logo_one.png" alt="Logo one">
+                <img src="./assets/logo_two.png" alt="Logo two">
+                <img src="./assets/logo_three.png" alt="Logo three">
+
+
+
+
+            </div>
+            <input type="file" id="upload" style="display:none;" />
+
+            <label class="bt" for="upload">Upload image</label>
             <h2>Add text</h2>
             <form id="text-form">
 
                 <input type="text" placeholder="Text input" id="text-input">
                 <div class="radio">
-                <label><input type="radio" name="fontName" value="Arial" > Arial</label>
-<label><input type="radio" name="fontName" value="Times New Roman" >   Times New Roman</label>
-<label><input type="radio" name="fontName" value="Open Sans"  > Open Sans</label>
-</div>
-<button id="add-text">Add text</button>            
-</form>
-            <input type="file" id="upload"> </input>
-
+                    <label><input type="radio" name="fontName" value="Arial" checked> Arial</label>
+                    <label><input type="radio" name="fontName" value="Times New Roman"> Times New Roman</label>
+                    <label><input type="radio" name="fontName" value="Open Sans"> Open Sans</label>
+                </div>
+                <button class="bt" id="add-text">Add text</button>
+            </form>
         </div>
 
 
