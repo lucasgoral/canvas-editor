@@ -24,15 +24,12 @@ const config = {
         ]
       },
       {
-        test: /\.png$/,
+        test: /\.(png|jpe?g|gif)$/i,
         use: [
           {
-            loader: 'url-loader',
-            options: {
-              mimetype: 'image/png'
-            }
-          }
-        ]
+            loader: 'url-loader'
+          },
+        ],
       },
       {
         test: /\.svg$/,

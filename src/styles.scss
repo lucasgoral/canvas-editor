@@ -1,37 +1,150 @@
-$primary-color: green;
-$bg: black;
+$primary-color: #b15c5d;
+$light-primary-color: #c07071;
+$dark-primary-color: #964b4c;
+$white: #FFF;
+$bg: #36393f;
+$secondaryBg: #202225;
 
 @import url('https://fonts.googleapis.com/css?family=Blinker&display=swap');
+
 body {
-  color: $primary-color;
-  background-color: salmon;
+  color: $white;
+  background-color: $bg;
   font-family: 'Blinker', sans-serif;
 }
 
 #container {
 
   background: #DDD;
+  background-image: url("/assets/empty_background.png");
+  background-repeat: repeat;
   border: 1px solid #CCC;
-  width: 1200px;
-  height: 800px;
+  width: 400px;
+  height: 400px;
   position: relative;
-  &.ondrag{
-&:after {
-top: 0;
-left:0;
-right:0;
-bottom: 0;
-position: absolute;
-content: "Drag image here";
-background: rgba(0,0,0,0.5);
-border: 5px solid red;
-color: white;
-font-size: 5rem;
-display: flex;
-align-items: center;
-justify-content: center;
-}
+  margin-bottom: 2rem;
+
+  &.ondrag {
+    &:after {
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      position: absolute;
+      content: "Drag image here";
+      background: rgba(0, 0, 0, 0.5);
+      border: 5px solid $dark-primary-color;
+      color: white;
+      font-size: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
     // border: 5px solid red;
   }
+}
+
+#app {
+  display: flex;
+  flex-direction: row;
+  max-width: 1400px;
+  margin: 0 auto;
+
+}
+
+.column {
+  width: 25%;
+
+  background: $secondaryBg;
+  border-radius: 1rem;
+  padding: 2rem;
+  margin: 1rem;
+}
+
+.main {
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: 50%;
+  flex-direction: column;
+
+
+  border-radius: 1rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 1rem;
+
+}
+
+button {
+
+  background: $primary-color;
+  color: $white;
+  padding: 1rem 4.5rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-radius: .5rem;
+  transition: background .4s, box-shadow .4s ease;
+  font-family: 'Blinker', sans-serif;
+  letter-spacing: 1px;
+  box-shadow: 0px 9px 32px 0px rgba(192, 112, 113, 0.4);
+  font-weight: 700;
+  font-size: 1rem;
+
+
+  cursor: pointer;
+
+  &:hover {
+    background: $dark-primary-color;
+
+    box-shadow: 0px 5px 32px -6px rgba(192, 112, 113, 0.6);
+
+  }
+}
+
+h1, h2, h3 {
+  margin-top: 0;
+}
+
+.radio{ 
+  border: $bg 1px solid;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  label {
+    display: block;
+    margin-bottom: 1rem;
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+    input { margin-right: 1rem;}
+  }
+}
+#save {
+  width: 400px;
+}
+
+img{
+  max-width: 100%;
+  height: auto;
+}
+
+.logos{
+  img{ max-height: 6rem;
+  
+  }
+}
+
+#text-input {
+  display: block;
+  width: calc(100% - 2rem);
+  padding: 1rem;
+  font-size: 1rem;
+
+  border-radius: .5rem;
+
+  
 }

@@ -63,10 +63,55 @@ class CanvasEditor {
             this.stage.find('Transformer').destroy();
 
             // create new transformer
-            let tr = new Konva.Transformer();
-            this.layer.add(tr);
+            let tr = new Konva.Transformer({
+                rotateEnabled: false
+            });
+           
             tr.attachTo(e.target);
+            // add delete button
+
+
+
+
+            const deleteBtImage = new Image();
+
+            deleteBtImage.onload = () => {
+
+
+                const deleteButton = new Konva.Image({
+                    image: deleteBtImage,
+                    x: -42,
+                    y: 0,
+                    width: 32,
+                    height: 32
+
+
+                });
+                tr.add(deleteButton);
+             
+                this.layer.draw();
+
+                deleteButton.on('click', () => {
+                    tr.destroy();
+                    e.target.destroy();
+                    this.layer.draw();
+
+
+                })
+
+          
+                
+
+
+              
+            };
+            deleteBtImage.src = '/assets/delete_icon.svg';
+
+
+        
+            this.layer.add(tr);
             this.layer.draw();
+
         });
     }
 
@@ -78,14 +123,18 @@ class CanvasEditor {
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
-        // delete link;
+
     }
 
     bindDownloadBt() {
         document.getElementById('save').addEventListener(
             'click',
             () => {
-                let dataURL = this.stage.toDataURL();
+                this.stage.find('Transformer').destroy();
+
+                let dataURL = this.stage.toDataURL({
+                    pixelRatio: 2 
+                  });
                 this.downloadURI(dataURL, 'stage.png');
             },
             false
@@ -120,6 +169,13 @@ class CanvasEditor {
     }
 
     bindImageDrop() {
+
+        let itemURL = '';
+        document
+            .getElementById('drag-items')
+            .addEventListener('dragstart', function (e) {
+                itemURL = e.target.src;
+            });
         this.container.addEventListener("dragover", (e) => {
             e.preventDefault();
             this.containerOnDragover();
@@ -127,7 +183,12 @@ class CanvasEditor {
         this.container.addEventListener("drop", (e) => {
             e.preventDefault();
             this.containerOnDragexit();
-            this.loadImage(e.dataTransfer.files[0]);
+            if (e.dataTransfer.files[0]) {
+                this.loadImage(e.dataTransfer.files[0]);
+            } else if (itemURL) {
+                console.log(itemURL);
+                this.render(itemURL);
+            }
         }, false);
         this.container.addEventListener("dragexit", (e) => {
             e.preventDefault();
@@ -145,11 +206,20 @@ class CanvasEditor {
 
     render(src) {
         const image = new Image();
+
         image.onload = () => {
+
+            const imageRatio = image.height / image.width;
+            const newWidth = 100;
+            const newHeight = newWidth * imageRatio;
+
+
             const newImage = new Konva.Image({
                 image: image,
                 x: 100,
                 y: 100,
+                width: newWidth,
+                height: newHeight,
                 draggable: true,
                 name: 'rect',
             });
@@ -166,7 +236,7 @@ class CanvasEditor {
 
         uploadFile.onchange = (e) => {
 
-  
+
             this.loadImage(e.target.files[0]);
 
         }
