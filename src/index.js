@@ -14,6 +14,7 @@ class CanvasEditor {
         this.container = document.getElementById('container');
         this.width = container.clientWidth;
         this.height = container.clientHeight;
+   
 
         this.stage = new Konva.Stage({
             container: 'container',
@@ -27,6 +28,8 @@ class CanvasEditor {
         this.bindDownloadBt();
         this.bindImageDrop();
         this.bindUploadBt();
+        this.bingBgSelector();
+
     }
 
     renderText() {
@@ -66,10 +69,10 @@ class CanvasEditor {
             let tr = new Konva.Transformer({
                 rotateEnabled: false
             });
-           
+
             tr.attachTo(e.target);
             // add delete button
-
+            e.target.moveToTop();
 
 
 
@@ -88,7 +91,7 @@ class CanvasEditor {
 
                 });
                 tr.add(deleteButton);
-             
+
                 this.layer.draw();
 
                 deleteButton.on('click', () => {
@@ -99,16 +102,16 @@ class CanvasEditor {
 
                 })
 
-          
-                
 
 
-              
+
+
+
             };
             deleteBtImage.src = '/assets/delete_icon.svg';
 
 
-        
+
             this.layer.add(tr);
             this.layer.draw();
 
@@ -133,8 +136,8 @@ class CanvasEditor {
                 this.stage.find('Transformer').destroy();
 
                 let dataURL = this.stage.toDataURL({
-                    pixelRatio: 2 
-                  });
+                    pixelRatio: 2
+                });
                 this.downloadURI(dataURL, 'stage.png');
             },
             false
@@ -241,6 +244,59 @@ class CanvasEditor {
 
         }
 
+    }
+
+    deleteBackground() {
+
+        this.stage.find('.background').destroy();
+        this.layer.draw();
+    }
+
+    setBackground(src) {
+        this.stage.find('.background').destroy();
+        const image = new Image();
+
+        image.onload = () => {
+
+            const imageRatio = image.height / image.width;
+            const newWidth = 400;
+            const newHeight = newWidth * imageRatio;
+
+
+            const currentBackground = new Konva.Image({
+                image: image,
+                x: 0,
+                y: 0,
+                width: newWidth,
+                height: newHeight,
+                draggable: false,
+                name: 'background',
+            });
+            this.layer.add(currentBackground);
+            currentBackground.moveToBottom();
+            this.layer.draw();
+        };
+        image.src = src;
+
+    }
+
+    bingBgSelector() {
+        const backgrounds = document.getElementById('backgrounds').getElementsByTagName('img');
+
+
+        [...backgrounds].forEach((element) => {
+            element.addEventListener('click', () => {
+
+
+
+
+                this.setBackground(element.src);
+            });
+        })
+
+        document.getElementById('delete').addEventListener('click', () => {
+            this.deleteBackground();
+        });
     }
 
 }

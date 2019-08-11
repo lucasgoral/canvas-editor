@@ -1,19 +1,66 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Empty project</title>
-        <meta charset="utf-8">
-    </head>
-    <body>
 
-        <div id="container"></div>
+<head>
+    <title>Canvvas editor</title>
+    <meta charset="utf-8">
+</head>
 
-        <button id="save">
+<body>
+
+
+    <div id="app">
+
+        <div class="column">
+            <div id="backgrounds">
+<h2>Select background</h2>
+<img src="/assets/bgs/01.jpg" alt="BG 1">
+<img src="/assets/bgs/02.jpg" alt="BG 2">
+<img src="/assets/bgs/03.jpg" alt="BG 3">
+<img src="/assets/bgs/04.jpg" alt="BG 4">
+<button id="delete"> Delete background</button>
+</div>
+        </div>
+
+        <div class="main">
+            <h1>Simple editor</h1>
+            <div id="container"></div>
+            <button id="save">
                 Save as image
-              </button>
+            </button>
+        </div>
 
-              <input type="file" id="upload"> </input>
+        <div class="column">
+            <h2>Add logo</h2>
+            <div class="logos" id="drag-items">
+            <img src="./assets/logo_one.png" alt="Logo one">
+            <img src="./assets/logo_two.png" alt="Logo two">
+            <img src="./assets/logo_three.png" alt="Logo three">
+        </div>
+            <h2>Add text</h2>
+            <form action="">
+
+                <input type="text" placeholder="Text input" id="text-input">
+                <div class="radio">
+                <label><input type="radio" name="font" checked> Arial</label>
+<label><input type="radio" name="font"> Times New Roman</label>
+<label><input type="radio" name="font"> Open Sans</label>
+</div>
+<button>Add text</button>            
+</form>
+            <input type="file" id="upload"> </input>
+
+        </div>
+
+
 
         <script src="bundle.js"></script>
-    </body>
+
+    </div>
+
+
+
+</body>
+
+
 </html>
