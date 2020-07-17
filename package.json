@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "konva": "^4.0.3",
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.19"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
